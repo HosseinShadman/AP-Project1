@@ -33,14 +33,16 @@ class Order:  # class for order information and payment
         self.order_number = random.randint(10000000000, 99999999999)  # using random library
         
     def checkout(self, card_number):
-        if len(str(card_number)) == 16:  
-            with open('confirmation.txt', 'w') as f:
+        if len(str(card_number)) == 16:  # verifying card number
+        # Payment successful
+            with open('confirmation.txt', 'w') as f:  # creat and write in a txt file
                 f.write(f'Card number: {card_number}\nStatus: Payment successful\nName: {self.name}')
             with open('invoice.txt', 'w') as f:
                 f.write(f'Order number: {self.order_number}\nName: {self.name}\nAddress: {self.address}\nPhone number: {self.phone_number}\nDelivery time: {self.delivery_time}\n\n')
                 for item in self.cart.items:
                     f.write(f'{item["product"].name}({item["attributes"]}): {item["product"].price}$(quantity:{item["quantity"]}) = {item["product"].price * item["quantity"]}$\n')
                 f.write(f'Total price: {self.cart.get_total_price()}$')
-        else:   
+        else: 
+        # Payment failed
             with open('confirmation.txt', 'w') as f:
                 f.write(f'Card number: {card_number}nStatus: Payment failednName: {self.name}')
