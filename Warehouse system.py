@@ -46,15 +46,16 @@ class Warehouse:  # a class for warehouse information
     def get_stock(self):
         stock_list = []
         for product in self.products:
-            stock_list.append([product.code, product.stock, 1]) 
+            stock_list.append([product.code, product.stock, 1])  # warehouse_code=1
         return stock_list
     
     def get_stock_in_textfile(self):
-        with open('getstock.txt', 'w') as f:  
+        with open('getstock.txt', 'w') as f:  # craet and write in a txt file
             for i in self.get_stock():
                 f.write(f'code: {i[0]} , stock: {i[1]} , warehouse_code: {i[2]}')
                 f.write('\n')
     
     def get_stock_in_csvfile(self):
+        # creating a dataframe using pandas library
         d = pd.DataFrame(self.get_stock() , columns = ['code', 'stock', 'warehouse_code'])  
-        d.to_csv('getstock.csv', index = False) 
+        d.to_csv('getstock.csv', index = False) # converting dataframe to a csv file
