@@ -23,15 +23,15 @@ class Address:  # main class
             return 'post'
             
     def choose_delivery_time(self):
-        available_delivery_times = []  
+        available_delivery_times = []  # list to store available delivery times
         available_delivery_times.append('morning')  
-        if self.afternoon_delivery_capacity > 0:  
+        if self.afternoon_delivery_capacity > 0:  # if there is capacity in the afternoon
             available_delivery_times.append('afternoon')
-        if self.evening_delivery_capacity > 0:
+        if self.evening_delivery_capacity > 0:    # if there is capacity in the evening
             available_delivery_times.append('evening')  
         delivery_time = input(f'Enter delivery time {available_delivery_times}: ')
         if delivery_time == 'evening':
-            self.evening_delivery_capacity -= 1  
+            self.evening_delivery_capacity -= 1  # reduce the capacity of the evening
         if delivery_time == 'afternoon':
-            self.afternoon_delivery_capacity -= 1  
+            self.afternoon_delivery_capacity -= 1  # reduce the capacity of the afternoon
         return delivery_time
