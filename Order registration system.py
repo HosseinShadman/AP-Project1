@@ -1,5 +1,7 @@
 import random  # importing random library
 
+from Logistic_system import Address  # useing Logistic_system module
+
 class Product:  # main class for product information
     def __init__(self, name, price, attributes):
         self.name = name
@@ -23,13 +25,13 @@ class Cart:  # a class for cart information
         return total_price
     
 class Order:  # class for order information and payment
-    def __init__(self, cart, address, phone_number, name, delivery_time, delivery_method):
+    def __init__(self, cart, address, phone_number, name):
         self.cart = cart
         self.address = address
         self.phone_number = phone_number
         self.name = name
-        self.delivery_time = delivery_time
-        self.delivery_method = delivery_method
+        self.delivery_time = Address().choose_delivery_time() # functions from Logistic system
+        self.delivery_method = Address().delivery_method()  # functions from Logistic system
         self.order_number = random.randint(10000000000, 99999999999)  # using random library
         
     def checkout(self, card_number):
