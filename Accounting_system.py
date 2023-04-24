@@ -13,10 +13,11 @@ class Successful_orders:  # main class for successful orders
         
     def csv_output(self):
         d = pd.DataFrame(self.orders , columns = ['number_of_goods', 'order_number', 'net_order_price', 'shipping_cost', 'tax'])
-        d.to_csv('output.csv', index = False)        
+        # creating a dataframe using pandas library
+        d.to_csv('output.csv', index = False)  # converting dataframe to a csv file     
 
     def text_output(self):
-        with open('output.txt', 'w') as f:  
+        with open('output.txt', 'w') as f:  # craet and write in a txt file
             for i in self.orders:
                 f.write(f'number_of_goods: {i[0]} , order_number: {i[1]} , net_order_price: {i[2]} , shipping_cost: {i[3]} , tax: {i[4]}')
                 f.write('\n')
