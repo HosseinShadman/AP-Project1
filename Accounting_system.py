@@ -10,3 +10,13 @@ class Successful_orders:  # main class for successful orders
         order_number = Order().order_number
         tax = net_order_price * 0.09
         self.orders.append([number_of_goods, order_number, net_order_price, shipping_cost, tax])
+        
+    def csv_output(self):
+        d = pd.DataFrame(self.orders , columns = ['number_of_goods', 'order_number', 'net_order_price', 'shipping_cost', 'tax'])
+        d.to_csv('output.csv', index = False)        
+
+    def text_output(self):
+        with open('output.txt', 'w') as f:  
+            for i in self.orders:
+                f.write(f'number_of_goods: {i[0]} , order_number: {i[1]} , net_order_price: {i[2]} , shipping_cost: {i[3]} , tax: {i[4]}')
+                f.write('\n')
