@@ -13,3 +13,9 @@ class Address:  # main class
             return 'address is correct'
         else:
             return 'address is incorrect'
+    
+    def delivery_method(self):  #  assign delivery method
+        if self.country_code == 1:  # if the city is Tehran
+            return 'courier'
+        else:
+            return 'post'
